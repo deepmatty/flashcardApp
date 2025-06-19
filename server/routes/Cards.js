@@ -6,9 +6,10 @@ router.get("/", (req, res) => {
   res.send("Hello world");
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const card = req.body;
-  Cards.create(card);
+  await Cards.create(card);
+  res.json(card);
 });
 
 module.exports = router;
