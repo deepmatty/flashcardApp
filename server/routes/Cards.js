@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const { Cards } = require("../models");
 
-router.get("/", (req, res) => {
-  res.send("Hello world");
+router.get("/", async (req, res) => {
+  const listOfCards = await Cards.findAll();
+  res.json(listOfCards);
 });
 
 router.post("/", async (req, res) => {
